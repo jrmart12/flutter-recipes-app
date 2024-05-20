@@ -1,19 +1,43 @@
-import 'package:recipes_app/auth/models/user.dart';
-import 'package:recipes_app/core/errors/auth_failure.dart';
+import 'package:dartz/dartz.dart';
+import '../business_objects/auth.failure.dart';
+import '../data_sources/auth_remote_data_source.dart';
+import '../../user/dtos/user_dto.dart';
 
 class AuthService {
-  Future<User> signIn(String email, String password) async {
-    // Example: Implement sign-in logic
-    throw AuthFailure('Sign-in failed');
+  final AuthRemoteDataSource _remoteDataSource;
+
+  AuthService(this._remoteDataSource);
+
+  Future<Either<AuthFailure, Unit>> signUp(
+      String email, String password) async {
+    try {
+      await _remoteDataSource.signUp(email, password);
+      return right(unit);
+    } catch (_) {
+      return left(AuthFailure.serverError);
+    }
   }
 
-  Future<User> signUp(String email, String password) async {
-    // Example: Implement sign-up logic
-    throw AuthFailure('Sign-up failed');
+  Future<Either<AuthFailure, Unit>> signIn(
+      String email, String password) async {
+    try {
+      await _remoteDataSource.signIn(email, password);
+      return right(unit);
+    } catch (_) {
+      return left(AuthFailure.invalidEmailPasswordCombination);
+    }
   }
 
-  Future<void> forgotPassword(String email) async {
-    // Example: Implement forgot password logic
-    throw AuthFailure('Forgot password failed');
+  Future<Either<AuthFailure, Unit>> resetPassword(String email) async {
+    try {
+      await _remoteDataSource.resetPassword(email);
+      return right(unit);
+    } catch (_) {
+      return left(AuthFailure.serverError);
+    }
+  }
+
+  Future<void> signOut() async {
+    await _remoteDataSource.signOut();
   }
 }

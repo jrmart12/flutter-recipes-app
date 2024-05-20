@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'auth_state.dart';
+part of 'user_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$AuthState {
+mixin _$UserState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -75,15 +75,15 @@ mixin _$AuthState {
 }
 
 /// @nodoc
-abstract class $AuthStateCopyWith<$Res> {
-  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
-      _$AuthStateCopyWithImpl<$Res, AuthState>;
+abstract class $UserStateCopyWith<$Res> {
+  factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
+      _$UserStateCopyWithImpl<$Res, UserState>;
 }
 
 /// @nodoc
-class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
-    implements $AuthStateCopyWith<$Res> {
-  _$AuthStateCopyWithImpl(this._value, this._then);
+class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
+    implements $UserStateCopyWith<$Res> {
+  _$UserStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -100,7 +100,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$UserStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -114,7 +114,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'AuthState.initial()';
+    return 'UserState.initial()';
   }
 
   @override
@@ -207,7 +207,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements AuthState {
+abstract class _Initial implements UserState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -220,7 +220,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$UserStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -234,7 +234,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'AuthState.loading()';
+    return 'UserState.loading()';
   }
 
   @override
@@ -327,7 +327,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements AuthState {
+abstract class _Loading implements UserState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -342,7 +342,7 @@ abstract class _$$AuthenticatedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$AuthenticatedImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthenticatedImpl>
+    extends _$UserStateCopyWithImpl<$Res, _$AuthenticatedImpl>
     implements _$$AuthenticatedImplCopyWith<$Res> {
   __$$AuthenticatedImplCopyWithImpl(
       _$AuthenticatedImpl _value, $Res Function(_$AuthenticatedImpl) _then)
@@ -372,7 +372,7 @@ class _$AuthenticatedImpl implements _Authenticated {
 
   @override
   String toString() {
-    return 'AuthState.authenticated(user: $user)';
+    return 'UserState.authenticated(user: $user)';
   }
 
   @override
@@ -473,7 +473,7 @@ class _$AuthenticatedImpl implements _Authenticated {
   }
 }
 
-abstract class _Authenticated implements AuthState {
+abstract class _Authenticated implements UserState {
   const factory _Authenticated(final User.User user) = _$AuthenticatedImpl;
 
   User.User get user;
@@ -491,7 +491,7 @@ abstract class _$$UnauthenticatedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$UnauthenticatedImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$UnauthenticatedImpl>
+    extends _$UserStateCopyWithImpl<$Res, _$UnauthenticatedImpl>
     implements _$$UnauthenticatedImplCopyWith<$Res> {
   __$$UnauthenticatedImplCopyWithImpl(
       _$UnauthenticatedImpl _value, $Res Function(_$UnauthenticatedImpl) _then)
@@ -505,7 +505,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
 
   @override
   String toString() {
-    return 'AuthState.unauthenticated()';
+    return 'UserState.unauthenticated()';
   }
 
   @override
@@ -598,7 +598,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   }
 }
 
-abstract class _Unauthenticated implements AuthState {
+abstract class _Unauthenticated implements UserState {
   const factory _Unauthenticated() = _$UnauthenticatedImpl;
 }
 
@@ -613,7 +613,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$UserStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -643,7 +643,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'AuthState.error(message: $message)';
+    return 'UserState.error(message: $message)';
   }
 
   @override
@@ -744,7 +744,7 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements AuthState {
+abstract class _Error implements UserState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;
