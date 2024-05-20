@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:gotrue/src/types/user.dart';
-import 'package:recipes_app/splash/views/splash_page.dart';
+import 'package:recipes_app/auth/views/splash_page.dart';
 import '../auth/views/login_page.dart';
 import '../auth/views/register_page.dart';
 import '../auth/views/reset_password_page.dart';

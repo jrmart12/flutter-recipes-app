@@ -37,13 +37,24 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircularProgressIndicator(),
-            SizedBox(height: 20),
-            Text('Loading...'),
+            const Text(
+              'Flavor Finder',
+              maxLines: 2,
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+            ),
+            Image.asset(
+              'assets/images/splash.png',
+              width: 400,
+              height: 400,
+            ),
+            const CircularProgressIndicator(
+              color: Color.fromRGBO(89, 126, 247, 1.000),
+            ),
           ],
         ),
       ),

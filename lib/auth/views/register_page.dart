@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipes_app/home/views/home_page.dart';
 import 'package:recipes_app/auth/blocs/auth_cubit.dart'; // Import your AuthCubit class
-import 'package:recipes_app/auth/blocs/auth_state.dart'
-    as AuthState; // Import your AuthState class
+import 'package:recipes_app/auth/blocs/auth_state.dart'; // Import your AuthState class
 import 'package:recipes_app/core/di/injection.dart';
 import 'package:gotrue/src/types/user.dart';
 
@@ -17,16 +16,17 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Register'),
-      ),
-      body: BlocProvider(
-        create: (context) => getIt<AuthCubit>(),
-        child: BlocConsumer<AuthCubit, AuthState.AuthState>(
+    return BlocProvider<AuthCubit>(
+      create: (context) => getIt<AuthCubit>(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Register'),
+        ),
+        body: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             state.when(
               authenticated: (currentUser) {
+                // Navigate to the home page or authenticated area
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                       builder: (_) => HomePage(
@@ -34,13 +34,16 @@ class RegisterPage extends StatelessWidget {
                           )),
                 );
               },
-              error: (message) {
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(SnackBar(content: Text(message)));
-              },
-              loading: () {},
               initial: () {},
+              loading: () {
+                Center(child: CircularProgressIndicator());
+              },
               unauthenticated: () {},
+              error: (String message) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(message)),
+                );
+              },
             );
           },
           builder: (context, state) {
@@ -82,3 +85,4 @@ class RegisterPage extends StatelessWidget {
     );
   }
 }
+

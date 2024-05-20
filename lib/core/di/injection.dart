@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:objectbox/objectbox.dart';
 import 'package:recipes_app/auth/blocs/auth_cubit.dart';
 import 'package:recipes_app/core/di/injection.config.dart';
 import 'package:recipes_app/user/blocs/user_cubit.dart';

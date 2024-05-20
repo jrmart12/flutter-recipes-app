@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../blocs/auth_cubit.dart';
-import '../blocs/auth_state.dart' as AuthState;
+import '../blocs/auth_state.dart';
 import '../../core/di/injection.dart';
 
 @RoutePage()
@@ -13,13 +13,13 @@ class ResetPasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Reset Password'),
-      ),
-      body: BlocProvider(
-        create: (context) => getIt<AuthCubit>(),
-        child: BlocConsumer<AuthCubit, AuthState.AuthState>(
+    return BlocProvider<AuthCubit>(
+      create: (context) => getIt<AuthCubit>(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Reset Password'),
+        ),
+        body: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             state.when(
               unauthenticated: () {
