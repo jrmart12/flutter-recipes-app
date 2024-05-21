@@ -11,6 +11,7 @@ import 'package:gotrue/src/types/user.dart';
 class RegisterPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController fullNameController = TextEditingController();
 
   RegisterPage({super.key});
 
@@ -117,8 +118,60 @@ class RegisterPage extends StatelessWidget {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   8, 20, 8, 10),
                               child: TextFormField(
-                                controller: emailController,
+                                controller: fullNameController,
                                 autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Full Name',
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                      color: Color(0xFFF2F2F2),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                      color: Colors.white,
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                      color: Colors.red,
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                      color: Colors.red,
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  filled: true,
+                                  fillColor: Color(0xFFF2F2F2),
+                                  labelStyle: TextStyle(
+                                    color: Color.fromRGBO(110, 113, 145, 1.000),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  8, 20, 8, 10),
+                              child: TextFormField(
+                                controller: emailController,
+                                autofocus: false,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: 'Email',
@@ -230,7 +283,8 @@ class RegisterPage extends StatelessWidget {
                               onPressed: () {
                                 context.read<AuthCubit>().signUp(
                                       emailController.text,
-                                      passwordController.text,
+                                    passwordController.text,
+                                    fullNameController.text
                                     );
                               },
                               style: ElevatedButton.styleFrom(

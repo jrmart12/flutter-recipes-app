@@ -33,8 +33,11 @@ abstract class RegisterModule {
   UserService get userService => UserService(userRemoteDataSource);
 
   @singleton
-  AuthCubit get authCubit => AuthCubit(getIt<AuthService>());
+  @singleton
+  UserCubit get userCubit => UserCubit(userService);
 
   @singleton
-  UserCubit get userCubit => UserCubit(getIt<UserService>());
+  AuthCubit get authCubit => AuthCubit(authService, userCubit);
+
+
 }

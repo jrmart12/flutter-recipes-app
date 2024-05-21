@@ -22,7 +22,28 @@ class UserCubit extends Cubit<UserState> {
       final result = await _userService.getUserInfo(user.id);
       result?.fold(
         (failure) => emit(const UserState.error('Failed to fetch user info')),
-        (userDto) => emit(UserState.authenticated(userDto as User.User)),
+        (userDto) => emit(UserState.authenticated(userDto)),
+      );
+    } on Object catch (error, stackTrace) {
+      print('Error occurred while fetching user info: $error\n$stackTrace');
+      emit(const UserState.error('An unexpected error occurred'));
+    }
+  }
+
+  Future<void> setUserInformation(String fullName) async {
+    emit(const UserState.loading());
+    final user = Supabase.instance.client.auth.currentUser;
+    if (user == null) {
+      emit(const UserState.unauthenticated());
+      return;
+    }
+
+    try {
+      final result = await _userService.setUserInfo(
+          user.id, user.email!, fullName, user.createdAt);
+      result?.fold(
+        (failure) => emit(const UserState.error('Failed to fetch user info')),
+        (userDto) => emit(UserState.authenticated(userDto)),
       );
     } on Object catch (error, stackTrace) {
       print('Error occurred while fetching user info: $error\n$stackTrace');

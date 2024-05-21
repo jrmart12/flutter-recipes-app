@@ -20,9 +20,10 @@ UserDto _$UserDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserDto {
-  String get id => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String? get fullName => throw _privateConstructorUsedError;
+  String? get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $UserDtoCopyWith<$Res> {
   factory $UserDtoCopyWith(UserDto value, $Res Function(UserDto) then) =
       _$UserDtoCopyWithImpl<$Res, UserDto>;
   @useResult
-  $Res call({String id, String email, String? fullName});
+  $Res call({String userId, String email, String? fullName, String? createdAt});
 }
 
 /// @nodoc
@@ -50,14 +51,15 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? userId = null,
     Object? email = null,
     Object? fullName = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -66,6 +68,10 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
       fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -78,7 +84,7 @@ abstract class _$$UserDtoImplCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       __$$UserDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String email, String? fullName});
+  $Res call({String userId, String email, String? fullName, String? createdAt});
 }
 
 /// @nodoc
@@ -92,14 +98,15 @@ class __$$UserDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? userId = null,
     Object? email = null,
     Object? fullName = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_$UserDtoImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -109,6 +116,10 @@ class __$$UserDtoImplCopyWithImpl<$Res>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -117,21 +128,26 @@ class __$$UserDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserDtoImpl implements _UserDto {
   const _$UserDtoImpl(
-      {required this.id, required this.email, required this.fullName});
+      {required this.userId,
+      required this.email,
+      required this.fullName,
+      required this.createdAt});
 
   factory _$UserDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserDtoImplFromJson(json);
 
   @override
-  final String id;
+  final String userId;
   @override
   final String email;
   @override
   final String? fullName;
+  @override
+  final String? createdAt;
 
   @override
   String toString() {
-    return 'UserDto(id: $id, email: $email, fullName: $fullName)';
+    return 'UserDto(userId: $userId, email: $email, fullName: $fullName, createdAt: $createdAt)';
   }
 
   @override
@@ -139,15 +155,18 @@ class _$UserDtoImpl implements _UserDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserDtoImpl &&
-            (identical(other.id, id) || other.id == id) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.fullName, fullName) ||
-                other.fullName == fullName));
+                other.fullName == fullName) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, fullName);
+  int get hashCode =>
+      Object.hash(runtimeType, userId, email, fullName, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -165,18 +184,21 @@ class _$UserDtoImpl implements _UserDto {
 
 abstract class _UserDto implements UserDto {
   const factory _UserDto(
-      {required final String id,
+      {required final String userId,
       required final String email,
-      required final String? fullName}) = _$UserDtoImpl;
+      required final String? fullName,
+      required final String? createdAt}) = _$UserDtoImpl;
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$UserDtoImpl.fromJson;
 
   @override
-  String get id;
+  String get userId;
   @override
   String get email;
   @override
   String? get fullName;
+  @override
+  String? get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$UserDtoImplCopyWith<_$UserDtoImpl> get copyWith =>

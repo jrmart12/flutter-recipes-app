@@ -1,18 +1,23 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:gotrue/src/types/user.dart' as User;
-import '../services/auth_service.dart';
-import '../business_objects/auth.failure.dart';
+import 'package:recipes_app/auth/services/auth_service.dart';
+import 'package:recipes_app/auth/business_objects/auth.failure.dart';
+import 'package:recipes_app/user/blocs/user_cubit.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'auth_state.dart' as AuthState;
 
+
 class AuthCubit extends Cubit<AuthState.AuthState> {
   final AuthService _authService;
-  AuthCubit(this._authService) : super(const AuthState.AuthState.initial());
+  final UserCubit _userCubit;
+
+  AuthCubit(this._authService, this._userCubit)
+      : super(const AuthState.AuthState.initial());
 
   get email => null;
 
-  Future<void> signUp(String email, String password) async {
+  Future<void> signUp(String email, String password, String fullName) async {
     if (email == null || email.isEmpty) {
       emit(const AuthState.AuthState.error('Invalid email'));
       return;
@@ -22,7 +27,15 @@ class AuthCubit extends Cubit<AuthState.AuthState> {
       final result = await _authService.signUp(email, password);
       result.fold(
         (failure) => _handleSignUpError(failure),
-        (_) => emit(const AuthState.AuthState.unauthenticated()),
+        (_) {
+          final user = Supabase.instance.client.auth.currentUser;
+          if (user != null) {
+            _userCubit.setUserInformation(fullName);
+            emit(AuthState.AuthState.authenticated(user as User.User));
+          } else {
+            emit(const AuthState.AuthState.unauthenticated());
+          }
+        },
       );
     } on Object catch (error, stackTrace) {
       emit(AuthState.AuthState.error('An unexpected error occurred: $error'));
@@ -73,6 +86,7 @@ Future<void> signIn(String email, String password) async {
 
     try {
       final result = await _authService.resetPassword(email);
+      print(result);
       result.fold(
         (failure) => _handleResetPasswordError(failure),
         (_) => emit(const AuthState.AuthState.unauthenticated()),

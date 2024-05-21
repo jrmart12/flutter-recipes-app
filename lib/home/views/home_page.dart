@@ -36,9 +36,12 @@ class HomePage extends StatelessWidget {
             // Your listener logic here
           },
           builder: (context, state) {
-            return Padding(
-              padding: const EdgeInsets.all(16.0),
+            return SafeArea(
+              top: true,
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
               child: Column(
+                  mainAxisSize: MainAxisSize.max,
                 children: [
                   const SizedBox(height: 16),
                   ElevatedButton(
@@ -47,13 +50,16 @@ class HomePage extends StatelessWidget {
                     },
                     child: const Text('Log Out'),
                   ),
+                    const SizedBox(height: 36),
                   UserInformationText(userId: user.id),
                 ],
+              ),
               ),
             );
           },
         ),
       ),
+
     );
   }
 }

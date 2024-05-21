@@ -21,16 +21,8 @@ class LoginPage extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          automaticallyImplyLeading: false,
-          leading: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
-              'assets/images/logo.png',
-              width: 380,
-              height: 200,
-            ),
-          ),
-        ),
+        automaticallyImplyLeading: false,
+      ),
         body: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             state.when(

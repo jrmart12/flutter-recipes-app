@@ -12,4 +12,10 @@ class UserService {
   Future<Either<UserFailure, UserDto>?> getUserInfo(String userId) async {
     return await _remoteDataSource.getUserInformation(userId);
   }
+
+  Future<Either<UserFailure, UserDto>?> setUserInfo(
+      String userId, String email, String fullName, String createdAt) async {
+    return await _remoteDataSource.setUserInformation(
+        userId, email, fullName, createdAt);
+  }
 }

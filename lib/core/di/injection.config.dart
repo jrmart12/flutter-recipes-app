@@ -10,12 +10,12 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:recipes_app/auth/blocs/auth_cubit.dart' as _i8;
+import 'package:recipes_app/auth/blocs/auth_cubit.dart' as _i9;
 import 'package:recipes_app/auth/data_sources/auth_remote_data_source.dart'
     as _i4;
 import 'package:recipes_app/auth/services/auth_service.dart' as _i6;
 import 'package:recipes_app/core/di/injection.dart' as _i10;
-import 'package:recipes_app/user/blocs/user_cubit.dart' as _i9;
+import 'package:recipes_app/user/blocs/user_cubit.dart' as _i8;
 import 'package:recipes_app/user/data_sources/user_remote_data_source.dart'
     as _i5;
 import 'package:recipes_app/user/services/user_service.dart' as _i7;
@@ -40,8 +40,8 @@ extension GetItInjectableX on _i1.GetIt {
         () => registerModule.userRemoteDataSource);
     gh.singleton<_i6.AuthService>(() => registerModule.authService);
     gh.singleton<_i7.UserService>(() => registerModule.userService);
-    gh.singleton<_i8.AuthCubit>(() => registerModule.authCubit);
-    gh.singleton<_i9.UserCubit>(() => registerModule.userCubit);
+    gh.singleton<_i8.UserCubit>(() => registerModule.userCubit);
+    gh.singleton<_i9.AuthCubit>(() => registerModule.authCubit);
     return this;
   }
 }
