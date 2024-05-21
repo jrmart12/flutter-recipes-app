@@ -17,9 +17,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthCubit>(
-      create: (context) => getIt<AuthCubit>(),
-      child: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -314,7 +312,6 @@ class LoginPage extends StatelessWidget {
               ),
             );
           },
-        ),
       ),
     );
   }

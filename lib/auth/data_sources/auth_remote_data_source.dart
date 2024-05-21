@@ -10,38 +10,46 @@ class AuthRemoteDataSource {
 
   Future<Either<AuthFailure, AuthResponse>?> signUp(
       String email, String password) async {
-    await _supabaseClient.auth
-        .signUp(email: email, password: password)
-        .then((value) {
-      return right(value);
-    }).catchError((error) {
-      // ignore: invalid_return_type_for_catch_error
+    try {
+      final response = await _supabaseClient.auth.signUp(
+        email: email,
+        password: password,
+      );
+      return right(response);
+    } catch (error) {
       return left(AuthFailure.serverError);
-    });
+    }
   }
 
   Future<Either<AuthFailure, AuthResponse>?> signIn(
       String email, String password) async {
-    await _supabaseClient.auth
-        .signInWithPassword(email: email, password: password)
-        .then((value) {
-      return right(value);
-    }).catchError((error) {
-      // ignore: invalid_return_type_for_catch_error
+
+    try {
+      final response = await _supabaseClient.auth
+          .signInWithPassword(email: email, password: password);
+      return right(response);
+    } catch (error) {
       return left(AuthFailure.serverError);
-    });
+    }
   }
 
-  Future<Either<AuthFailure, Unit>?> resetPassword(String email) async {
-    await _supabaseClient.auth.resetPasswordForEmail(email).then((value) {
-      return right(value);
-    }).catchError((error) {
-      // ignore: invalid_return_type_for_catch_error
+  Future<Either<AuthFailure, Unit>> resetPassword(String email) async {
+    try {
+      await _supabaseClient.auth.resetPasswordForEmail(email);
+      return right(unit);
+    } catch (error) {
       return left(AuthFailure.serverError);
-    });
+    }
   }
 
   Future<void> signOut() async {
-    await _supabaseClient.auth.signOut();
+    try {
+      await _supabaseClient.auth.signOut();
+    } on Object catch (error, stackTrace) {
+      print(
+        'Error occurred while signing out: $error\n$stackTrace',
+      );
+      rethrow;
+    }
   }
 }

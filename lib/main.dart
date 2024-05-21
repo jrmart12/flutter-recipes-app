@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipes_app/auth/blocs/auth_cubit.dart';
 import 'package:recipes_app/auth/services/auth_service.dart';
 import 'package:recipes_app/core/di/injection.dart';
 import 'package:recipes_app/router/app_router.dart';
+import 'package:recipes_app/user/blocs/user_cubit.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:gotrue/src/types/user.dart' as User;
-import 'package:get_it/get_it.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,17 +16,24 @@ void main() async {
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhodnRjdHJmdGhlb3JjdmR3Z2JvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYxMzI5NjQsImV4cCI6MjAzMTcwODk2NH0.VueYX7QRMX4R2pE2cxSHDYc-tYJhiLVKj4tQxnhBIDQ',
   );
   configureDependencies();
-  runApp(App());
+  runApp(MyApp(
+    authCubit: getIt<AuthCubit>(),
+    userCubit: getIt<UserCubit>(),
+  ));
 }
 
-class App extends StatefulWidget {
-  const App({super.key});
+class MyApp extends StatefulWidget {
+  final AuthCubit authCubit;
+  final UserCubit userCubit;
+
+  const MyApp({Key? key, required this.authCubit, required this.userCubit})
+      : super(key: key);
 
   @override
-  State<App> createState() => _AppState();
+  State<MyApp> createState() => _MyAppState();
 }
 
-class _AppState extends State<App> {
+class _MyAppState extends State<MyApp> {
   final _appRouter = AppRouter();
 
   @override
@@ -38,28 +47,37 @@ class _AppState extends State<App> {
       final session = authState.session;
       print('session::::: $session');
       print('event::::::: $event');
-      if (event == AuthChangeEvent.signedIn) {
-        if (session != null) {
+      try {
+        if (event == AuthChangeEvent.signedIn) {
+          if (session != null) {
+            _appRouter
+              ..popUntilRoot()
+              ..replace(HomeRoute(user: session.user as User.User));
+          } else {
+            getIt<AuthService>().signOut();
+          }
+        } else if (event == AuthChangeEvent.signedOut) {
           _appRouter
             ..popUntilRoot()
-            ..replace(HomeRoute(user: session.user as User.User));
-        } else {
-          getIt<AuthService>().signOut();
+            ..replace(LoginRoute());
         }
-      } else if (event == AuthChangeEvent.signedOut) {
-        _appRouter
-          ..popUntilRoot()
-          ..replace(LoginRoute());
+      } catch (error) {
+        print('Error occurred in onAuthStateChange: $error');
       }
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Recipes Auth App',
-      routerConfig: _appRouter.config(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: widget.authCubit),
+        BlocProvider.value(value: widget.userCubit),
+      ],
+      child: MaterialApp.router(
+        title: 'Recipes Auth App',
+        routerConfig: _appRouter.config(),
+      ),
     );
   }
 }
