@@ -28,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
     final user = await Supabase.instance.client.auth.currentUser;
     // Redirect to appropriate route based on authentication status
     if (isAuthenticated && user != null) {
-      context.router.replace(HomeRoute(user: user));
+      context.router.replace(HomeRoute());
     } else {
       context.router.replace(LoginRoute());
     }

@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
           if (session != null) {
             _appRouter
               ..popUntilRoot()
-              ..replace(HomeRoute(user: session.user as User.User));
+              ..replace(HomeRoute());
           } else {
             getIt<AuthService>().signOut();
           }

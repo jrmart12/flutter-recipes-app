@@ -30,7 +30,6 @@ class RegisterPage extends StatelessWidget {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                       builder: (_) => HomePage(
-                            user: currentUser as User,
                           )),
                 );
               },
