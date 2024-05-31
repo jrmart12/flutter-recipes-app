@@ -17,9 +17,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
+
       body: MultiBlocProvider(
         providers: [
           BlocProvider.value(
@@ -41,13 +39,7 @@ class HomePage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         const SizedBox(height: 16),
-                        ElevatedButton(
-                          onPressed: () {
-                            context.read<AuthCubit>().signOut();
-                          },
-                          child: const Text('Log Out'),
-                        ),
-                        const SizedBox(height: 36),
+                        
                         UserInformationText(userId: user.userId),
                       ],
                     ),

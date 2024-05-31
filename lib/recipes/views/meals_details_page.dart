@@ -17,6 +17,7 @@ class MealDetailsPage extends StatefulWidget {
 class _MealDetailsPageState extends State<MealDetailsPage> {
   final MealApiService _mealApiService = MealApiService(Dio());
   Meal? _meal;
+  bool _isFavorite = false;
 
   @override
   void initState() {
@@ -38,9 +39,24 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(    
       appBar: AppBar(
-        title: Text(_meal?.name ?? 'Meal Details'),
+        title: Center(
+          child: Text(_meal?.name ?? 'Meal Details'),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              _isFavorite ? Icons.favorite : Icons.favorite_border,
+              color: _isFavorite ? Colors.red : null,
+            ),
+            onPressed: () {
+              setState(() {
+                _isFavorite = !_isFavorite;
+              });
+            },
+          ),
+        ],
       ),
       body: _meal == null
           ? const Center(child: CircularProgressIndicator())
@@ -48,11 +64,17 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Image.network(
-                    _meal!.imageUrl,
-                    fit: BoxFit.cover,
-                    height: 200,
-                    width: double.infinity,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.network(
+                        _meal!.imageUrl,
+                        fit: BoxFit.cover,
+                        height: 200,
+                        width: double.infinity,
+                      ),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -71,7 +93,7 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 const Text(
                                   'Ingredients',
