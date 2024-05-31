@@ -103,10 +103,20 @@ class ProfilePage extends StatelessWidget {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               const SizedBox(height: 16),
+                              
                               ElevatedButton(
                                 onPressed: () {
                                   context.read<AuthCubit>().signOut();
                                 },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color.fromRGBO(
+                                        89, 126, 247, 1.000),
+                                    foregroundColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(40)),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 15, horizontal: 60)),
                                 child: const Text('Log Out'),
                               ),
                               const SizedBox(height: 36),

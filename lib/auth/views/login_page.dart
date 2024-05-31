@@ -47,10 +47,11 @@ class LoginPage extends StatelessWidget {
         builder: (context, state) {
           return SafeArea(
             top: true,
+            child: SingleChildScrollView(
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
               child: Column(
-                mainAxisSize: MainAxisSize.max,
+                  mainAxisSize: MainAxisSize.min,
                 children: [
                   Row(
                     mainAxisSize: MainAxisSize.max,
@@ -294,6 +295,7 @@ class LoginPage extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
             ),
           );
         },
