@@ -7,9 +7,16 @@ import 'package:recipes_app/router/app_router.dart';
 import 'package:recipes_app/user/blocs/user_cubit.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:gotrue/src/types/user.dart' as User;
+import 'package:flutter/services.dart'; 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   await Supabase.initialize(
     url: 'https://hhvtctrftheorcvdwgbo.supabase.co',
     anonKey:

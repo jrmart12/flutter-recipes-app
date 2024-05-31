@@ -8,14 +8,19 @@ import 'package:recipes_app/user/services/user_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../auth/data_sources/auth_remote_data_source.dart';
 import '../../auth/services/auth_service.dart';
+import 'package:recipes_app/network/retrofit.dart';
+import 'package:dio/dio.dart';
 
 final getIt = GetIt.instance;
 
 @InjectableInit(preferRelativeImports: false)
 void configureDependencies() => getIt.init();
 
+
+
 @module
 abstract class RegisterModule {
+  
   SupabaseClient get supabaseClient => Supabase.instance.client;
 
   @singleton
@@ -33,11 +38,15 @@ abstract class RegisterModule {
   UserService get userService => UserService(userRemoteDataSource);
 
   @singleton
-  @singleton
   UserCubit get userCubit => UserCubit(userService);
 
   @singleton
   AuthCubit get authCubit => AuthCubit(authService, userCubit);
 
+  @singleton
+  Dio get dio => Dio();
 
+  @singleton
+  MealApiService get mealApiService => MealApiService(dio);
 }
+
