@@ -50,4 +50,41 @@ class UserCubit extends Cubit<UserState> {
       emit(const UserState.error('An unexpected error occurred'));
     }
   }
+
+  Future<void> updateFavoriteRecipes(List<String> favoriteRecipes) async {
+    emit(const UserState.loading());
+    final user = Supabase.instance.client.auth.currentUser;
+    if (user == null) {
+      emit(const UserState.unauthenticated());
+      return;
+    }
+
+    final result =
+        await _userService.updateFavoriteRecipes(user.id, favoriteRecipes);
+    result?.fold(
+      (failure) => emit(UserState.error(failure.toString())),
+      (success) => emit(UserState.favoriteRecipesUpdated(favoriteRecipes)),
+    );
+  }
+
+  Future<void> getUserFavoriteRecipes() async {
+    emit(const UserState.loading());
+    final user = Supabase.instance.client.auth.currentUser;
+    if (user == null) {
+      emit(const UserState.unauthenticated());
+      return;
+    }
+
+    try {
+      final result = await _userService.getUserFavoriteRecipes(user.id);
+      result?.fold(
+        (failure) => emit(const UserState.error('Failed to fetch user info')),
+        (userDto) => emit(UserState.authenticated(userDto)),
+      );
+    } on Object catch (error, stackTrace) {
+      print('Error occurred while fetching user info: $error\n$stackTrace');
+      emit(const UserState.error('An unexpected error occurred'));
+    }
+  }
+
 }

@@ -24,6 +24,8 @@ mixin _$UserDto {
   String get email => throw _privateConstructorUsedError;
   String? get fullName => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'favoriteRecipes')
+  List<String>? get favoriteRecipes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +37,12 @@ abstract class $UserDtoCopyWith<$Res> {
   factory $UserDtoCopyWith(UserDto value, $Res Function(UserDto) then) =
       _$UserDtoCopyWithImpl<$Res, UserDto>;
   @useResult
-  $Res call({String userId, String email, String? fullName, String? createdAt});
+  $Res call(
+      {String userId,
+      String email,
+      String? fullName,
+      String? createdAt,
+      @JsonKey(name: 'favoriteRecipes') List<String>? favoriteRecipes});
 }
 
 /// @nodoc
@@ -55,6 +62,7 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
     Object? email = null,
     Object? fullName = freezed,
     Object? createdAt = freezed,
+    Object? favoriteRecipes = freezed,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
@@ -73,6 +81,10 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      favoriteRecipes: freezed == favoriteRecipes
+          ? _value.favoriteRecipes
+          : favoriteRecipes // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -84,7 +96,12 @@ abstract class _$$UserDtoImplCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       __$$UserDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId, String email, String? fullName, String? createdAt});
+  $Res call(
+      {String userId,
+      String email,
+      String? fullName,
+      String? createdAt,
+      @JsonKey(name: 'favoriteRecipes') List<String>? favoriteRecipes});
 }
 
 /// @nodoc
@@ -102,6 +119,7 @@ class __$$UserDtoImplCopyWithImpl<$Res>
     Object? email = null,
     Object? fullName = freezed,
     Object? createdAt = freezed,
+    Object? favoriteRecipes = freezed,
   }) {
     return _then(_$UserDtoImpl(
       userId: null == userId
@@ -120,6 +138,10 @@ class __$$UserDtoImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      favoriteRecipes: freezed == favoriteRecipes
+          ? _value._favoriteRecipes
+          : favoriteRecipes // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -131,7 +153,9 @@ class _$UserDtoImpl implements _UserDto {
       {required this.userId,
       required this.email,
       required this.fullName,
-      required this.createdAt});
+      required this.createdAt,
+      @JsonKey(name: 'favoriteRecipes') final List<String>? favoriteRecipes})
+      : _favoriteRecipes = favoriteRecipes;
 
   factory _$UserDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserDtoImplFromJson(json);
@@ -144,10 +168,20 @@ class _$UserDtoImpl implements _UserDto {
   final String? fullName;
   @override
   final String? createdAt;
+  final List<String>? _favoriteRecipes;
+  @override
+  @JsonKey(name: 'favoriteRecipes')
+  List<String>? get favoriteRecipes {
+    final value = _favoriteRecipes;
+    if (value == null) return null;
+    if (_favoriteRecipes is EqualUnmodifiableListView) return _favoriteRecipes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'UserDto(userId: $userId, email: $email, fullName: $fullName, createdAt: $createdAt)';
+    return 'UserDto(userId: $userId, email: $email, fullName: $fullName, createdAt: $createdAt, favoriteRecipes: $favoriteRecipes)';
   }
 
   @override
@@ -160,13 +194,15 @@ class _$UserDtoImpl implements _UserDto {
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            const DeepCollectionEquality()
+                .equals(other._favoriteRecipes, _favoriteRecipes));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, email, fullName, createdAt);
+  int get hashCode => Object.hash(runtimeType, userId, email, fullName,
+      createdAt, const DeepCollectionEquality().hash(_favoriteRecipes));
 
   @JsonKey(ignore: true)
   @override
@@ -187,7 +223,9 @@ abstract class _UserDto implements UserDto {
       {required final String userId,
       required final String email,
       required final String? fullName,
-      required final String? createdAt}) = _$UserDtoImpl;
+      required final String? createdAt,
+      @JsonKey(name: 'favoriteRecipes')
+      final List<String>? favoriteRecipes}) = _$UserDtoImpl;
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$UserDtoImpl.fromJson;
 
@@ -199,6 +237,9 @@ abstract class _UserDto implements UserDto {
   String? get fullName;
   @override
   String? get createdAt;
+  @override
+  @JsonKey(name: 'favoriteRecipes')
+  List<String>? get favoriteRecipes;
   @override
   @JsonKey(ignore: true)
   _$$UserDtoImplCopyWith<_$UserDtoImpl> get copyWith =>

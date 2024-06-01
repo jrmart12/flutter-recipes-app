@@ -23,6 +23,8 @@ mixin _$UserState {
     required TResult Function(UserDto user) authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(String message) error,
+    required TResult Function(List<String> favoriteRecipes)
+        favoriteRecipesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +34,7 @@ mixin _$UserState {
     TResult? Function(UserDto user)? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(String message)? error,
+    TResult? Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +44,7 @@ mixin _$UserState {
     TResult Function(UserDto user)? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(String message)? error,
+    TResult Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +55,8 @@ mixin _$UserState {
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Error value) error,
+    required TResult Function(_FavoriteRecipesUpdated value)
+        favoriteRecipesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +66,7 @@ mixin _$UserState {
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Error value)? error,
+    TResult? Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +76,7 @@ mixin _$UserState {
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Error value)? error,
+    TResult Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,6 +142,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(UserDto user) authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(String message) error,
+    required TResult Function(List<String> favoriteRecipes)
+        favoriteRecipesUpdated,
   }) {
     return initial();
   }
@@ -146,6 +156,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(UserDto user)? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(String message)? error,
+    TResult? Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
   }) {
     return initial?.call();
   }
@@ -158,6 +169,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(UserDto user)? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(String message)? error,
+    TResult Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -174,6 +186,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Error value) error,
+    required TResult Function(_FavoriteRecipesUpdated value)
+        favoriteRecipesUpdated,
   }) {
     return initial(this);
   }
@@ -186,6 +200,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Error value)? error,
+    TResult? Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
   }) {
     return initial?.call(this);
   }
@@ -198,6 +213,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Error value)? error,
+    TResult Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -254,6 +270,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(UserDto user) authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(String message) error,
+    required TResult Function(List<String> favoriteRecipes)
+        favoriteRecipesUpdated,
   }) {
     return loading();
   }
@@ -266,6 +284,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(UserDto user)? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(String message)? error,
+    TResult? Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
   }) {
     return loading?.call();
   }
@@ -278,6 +297,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(UserDto user)? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(String message)? error,
+    TResult Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -294,6 +314,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Error value) error,
+    required TResult Function(_FavoriteRecipesUpdated value)
+        favoriteRecipesUpdated,
   }) {
     return loading(this);
   }
@@ -306,6 +328,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Error value)? error,
+    TResult? Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
   }) {
     return loading?.call(this);
   }
@@ -318,6 +341,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Error value)? error,
+    TResult Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -410,6 +434,8 @@ class _$AuthenticatedImpl implements _Authenticated {
     required TResult Function(UserDto user) authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(String message) error,
+    required TResult Function(List<String> favoriteRecipes)
+        favoriteRecipesUpdated,
   }) {
     return authenticated(user);
   }
@@ -422,6 +448,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult? Function(UserDto user)? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(String message)? error,
+    TResult? Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
   }) {
     return authenticated?.call(user);
   }
@@ -434,6 +461,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult Function(UserDto user)? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(String message)? error,
+    TResult Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -450,6 +478,8 @@ class _$AuthenticatedImpl implements _Authenticated {
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Error value) error,
+    required TResult Function(_FavoriteRecipesUpdated value)
+        favoriteRecipesUpdated,
   }) {
     return authenticated(this);
   }
@@ -462,6 +492,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Error value)? error,
+    TResult? Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
   }) {
     return authenticated?.call(this);
   }
@@ -474,6 +505,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Error value)? error,
+    TResult Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -535,6 +567,8 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     required TResult Function(UserDto user) authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(String message) error,
+    required TResult Function(List<String> favoriteRecipes)
+        favoriteRecipesUpdated,
   }) {
     return unauthenticated();
   }
@@ -547,6 +581,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult? Function(UserDto user)? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(String message)? error,
+    TResult? Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
   }) {
     return unauthenticated?.call();
   }
@@ -559,6 +594,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult Function(UserDto user)? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(String message)? error,
+    TResult Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -575,6 +611,8 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Error value) error,
+    required TResult Function(_FavoriteRecipesUpdated value)
+        favoriteRecipesUpdated,
   }) {
     return unauthenticated(this);
   }
@@ -587,6 +625,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Error value)? error,
+    TResult? Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
   }) {
     return unauthenticated?.call(this);
   }
@@ -599,6 +638,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Error value)? error,
+    TResult Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -681,6 +721,8 @@ class _$ErrorImpl implements _Error {
     required TResult Function(UserDto user) authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(String message) error,
+    required TResult Function(List<String> favoriteRecipes)
+        favoriteRecipesUpdated,
   }) {
     return error(message);
   }
@@ -693,6 +735,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(UserDto user)? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(String message)? error,
+    TResult? Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
   }) {
     return error?.call(message);
   }
@@ -705,6 +748,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(UserDto user)? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(String message)? error,
+    TResult Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -721,6 +765,8 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Error value) error,
+    required TResult Function(_FavoriteRecipesUpdated value)
+        favoriteRecipesUpdated,
   }) {
     return error(this);
   }
@@ -733,6 +779,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Error value)? error,
+    TResult? Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
   }) {
     return error?.call(this);
   }
@@ -745,6 +792,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Error value)? error,
+    TResult Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -761,4 +809,175 @@ abstract class _Error implements UserState {
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FavoriteRecipesUpdatedImplCopyWith<$Res> {
+  factory _$$FavoriteRecipesUpdatedImplCopyWith(
+          _$FavoriteRecipesUpdatedImpl value,
+          $Res Function(_$FavoriteRecipesUpdatedImpl) then) =
+      __$$FavoriteRecipesUpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> favoriteRecipes});
+}
+
+/// @nodoc
+class __$$FavoriteRecipesUpdatedImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$FavoriteRecipesUpdatedImpl>
+    implements _$$FavoriteRecipesUpdatedImplCopyWith<$Res> {
+  __$$FavoriteRecipesUpdatedImplCopyWithImpl(
+      _$FavoriteRecipesUpdatedImpl _value,
+      $Res Function(_$FavoriteRecipesUpdatedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? favoriteRecipes = null,
+  }) {
+    return _then(_$FavoriteRecipesUpdatedImpl(
+      null == favoriteRecipes
+          ? _value._favoriteRecipes
+          : favoriteRecipes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FavoriteRecipesUpdatedImpl implements _FavoriteRecipesUpdated {
+  const _$FavoriteRecipesUpdatedImpl(final List<String> favoriteRecipes)
+      : _favoriteRecipes = favoriteRecipes;
+
+  final List<String> _favoriteRecipes;
+  @override
+  List<String> get favoriteRecipes {
+    if (_favoriteRecipes is EqualUnmodifiableListView) return _favoriteRecipes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favoriteRecipes);
+  }
+
+  @override
+  String toString() {
+    return 'UserState.favoriteRecipesUpdated(favoriteRecipes: $favoriteRecipes)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FavoriteRecipesUpdatedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._favoriteRecipes, _favoriteRecipes));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_favoriteRecipes));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FavoriteRecipesUpdatedImplCopyWith<_$FavoriteRecipesUpdatedImpl>
+      get copyWith => __$$FavoriteRecipesUpdatedImplCopyWithImpl<
+          _$FavoriteRecipesUpdatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(UserDto user) authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function(String message) error,
+    required TResult Function(List<String> favoriteRecipes)
+        favoriteRecipesUpdated,
+  }) {
+    return favoriteRecipesUpdated(favoriteRecipes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(UserDto user)? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function(String message)? error,
+    TResult? Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
+  }) {
+    return favoriteRecipesUpdated?.call(favoriteRecipes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(UserDto user)? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function(String message)? error,
+    TResult Function(List<String> favoriteRecipes)? favoriteRecipesUpdated,
+    required TResult orElse(),
+  }) {
+    if (favoriteRecipesUpdated != null) {
+      return favoriteRecipesUpdated(favoriteRecipes);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(_Error value) error,
+    required TResult Function(_FavoriteRecipesUpdated value)
+        favoriteRecipesUpdated,
+  }) {
+    return favoriteRecipesUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
+  }) {
+    return favoriteRecipesUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_Error value)? error,
+    TResult Function(_FavoriteRecipesUpdated value)? favoriteRecipesUpdated,
+    required TResult orElse(),
+  }) {
+    if (favoriteRecipesUpdated != null) {
+      return favoriteRecipesUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FavoriteRecipesUpdated implements UserState {
+  const factory _FavoriteRecipesUpdated(final List<String> favoriteRecipes) =
+      _$FavoriteRecipesUpdatedImpl;
+
+  List<String> get favoriteRecipes;
+  @JsonKey(ignore: true)
+  _$$FavoriteRecipesUpdatedImplCopyWith<_$FavoriteRecipesUpdatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

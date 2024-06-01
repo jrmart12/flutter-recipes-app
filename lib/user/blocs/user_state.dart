@@ -10,4 +10,6 @@ class UserState with _$UserState {
   const factory UserState.authenticated(UserDto user) = _Authenticated;
   const factory UserState.unauthenticated() = _Unauthenticated;
   const factory UserState.error(String message) = _Error;
+  const factory UserState.favoriteRecipesUpdated(List<String> favoriteRecipes) =
+      _FavoriteRecipesUpdated;
 }

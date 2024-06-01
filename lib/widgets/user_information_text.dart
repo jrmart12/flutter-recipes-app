@@ -20,13 +20,22 @@ class UserInformationText extends StatelessWidget {
           authenticated: (user) => Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Welcome, ${user.fullName}'),
+              Text(
+                'Welcome, ${user.fullName}',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0,
+                ),
+              ),
               // Display more user information here if needed
             ],
           ),
           error: (message) => Center(child: Text('Error: $message')),
           unauthenticated: () {
             throw ('unauthenticated');
+          },
+          favoriteRecipesUpdated: (List<String> favoriteRecipes) {
+            throw ('favoriteRecipesUpdated');
           },
         );
       },

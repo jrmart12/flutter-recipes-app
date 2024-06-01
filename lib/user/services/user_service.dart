@@ -18,4 +18,17 @@ class UserService {
     return await _remoteDataSource.setUserInformation(
         userId, email, fullName, createdAt);
   }
+
+  Future<Either<UserFailure, Unit>?> updateFavoriteRecipes(
+      String userId, List<String> favoriteRecipes) async {
+    return await _remoteDataSource.updateFavoriteRecipes(
+        userId, favoriteRecipes);
+  }
+
+  Future<Either<UserFailure, UserDto>?> getUserFavoriteRecipes(
+      String userId) async {
+    return await _remoteDataSource.getUserFavoriteRecipes(userId);
+  }
+
+  
 }

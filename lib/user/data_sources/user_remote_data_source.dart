@@ -50,4 +50,44 @@ print('user info $data');
       return left(UserFailure.serverError);
     }
   }
+
+  Future<Either<UserFailure, Unit>?> updateFavoriteRecipes(
+      String userId, List<String> favoriteRecipes) async {
+    try {
+      await _client.from('users').update({
+        'favoriteRecipes': favoriteRecipes,
+      }).eq('userId', userId);
+
+      return right(unit);
+    } on Object catch (error, stackTrace) {
+      print(
+          'Error occurred while updating favorite recipes: $error\n$stackTrace');
+      return left(UserFailure.serverError);
+    }
+  }
+
+  Future<Either<UserFailure, UserDto>?> getUserFavoriteRecipes(
+      String userId) async {
+    try {
+      final data = await _client
+          .from('users')
+          .select('*, favoriteRecipes')
+          .eq('userId', userId)
+          .single();
+
+      print(data);
+      if (data == null) {
+        return left(UserFailure.userNotFound);
+      }
+
+      print('user info $data');
+      final userDto = UserDto.fromJson(data);
+
+      return right(userDto);
+    } on Object catch (error, stackTrace) {
+      print('Error occurred while fetching user info: $error\n$stackTrace');
+
+      return left(UserFailure.serverError);
+    }
+  }
 }

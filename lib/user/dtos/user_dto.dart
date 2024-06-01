@@ -10,7 +10,8 @@ class UserDto with _$UserDto {
     required String userId,
     required String email,
     required String? fullName,
-      required String? createdAt
+    required String? createdAt,
+    @JsonKey(name: 'favoriteRecipes') List<String>? favoriteRecipes,
   }) = _UserDto;
 
   factory UserDto.fromJson(Map<String, dynamic> json) =>
@@ -20,6 +21,7 @@ class UserDto with _$UserDto {
         'userId': userId,
         'email': email,
         'fullName': fullName,
-        'createdAt': createdAt
+        'createdAt': createdAt,
+        'favoriteRecipes': favoriteRecipes,
       };
 }

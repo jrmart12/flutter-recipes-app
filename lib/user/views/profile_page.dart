@@ -26,6 +26,9 @@ class ProfilePage extends StatelessWidget {
               Tab(text: 'My Recipes'),
               Tab(text: 'Profile'),
             ],
+            indicatorColor: const Color.fromRGBO(
+                89, 126, 247, 1.000), // Change the indicator color
+            labelColor: const Color.fromRGBO(89, 126, 247, 1.000),
           ),
         ),
         body: MultiBlocProvider(
