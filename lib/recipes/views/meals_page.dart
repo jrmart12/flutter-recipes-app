@@ -45,7 +45,9 @@ class _MealsPageState extends State<MealsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text(widget.categoryName),
       ),
       body: Padding(

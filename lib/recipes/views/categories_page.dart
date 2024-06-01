@@ -39,7 +39,9 @@ class _CategoriesPageState extends State<CategoriesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: const Text('Categories'),
       ),
       body: _categories.isNotEmpty
@@ -60,6 +62,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                       );
                     },
                     child: Card(
+                      
                       elevation: 4.0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
