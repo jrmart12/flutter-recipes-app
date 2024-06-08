@@ -6,6 +6,7 @@ import 'package:recipes_app/core/di/injection.dart';
 import 'package:recipes_app/router/app_router.dart';
 import 'package:recipes_app/user/blocs/user_cubit.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:recipes_app/recipes/blocs/recipe_cubit.dart';
 import 'package:gotrue/src/types/user.dart' as User;
 import 'package:flutter/services.dart'; 
 
@@ -26,14 +27,21 @@ void main() async {
   runApp(MyApp(
     authCubit: getIt<AuthCubit>(),
     userCubit: getIt<UserCubit>(),
+    recipeCubit: getIt<RecipeCubit>(),
   ));
 }
 
 class MyApp extends StatefulWidget {
   final AuthCubit authCubit;
   final UserCubit userCubit;
+  final RecipeCubit recipeCubit;
 
-  const MyApp({Key? key, required this.authCubit, required this.userCubit})
+  const MyApp({
+    Key? key,
+    required this.authCubit,
+    required this.userCubit,
+    required this.recipeCubit,
+  })
       : super(key: key);
 
   @override
@@ -80,6 +88,7 @@ class _MyAppState extends State<MyApp> {
       providers: [
         BlocProvider.value(value: widget.authCubit),
         BlocProvider.value(value: widget.userCubit),
+        BlocProvider.value(value: widget.recipeCubit),
       ],
       child: MaterialApp.router(
         title: 'Recipes Auth App',

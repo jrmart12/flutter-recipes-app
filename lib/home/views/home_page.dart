@@ -90,7 +90,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: MultiBlocProvider(
+      body: SingleChildScrollView(
+        child: MultiBlocProvider(
         providers: [
           BlocProvider.value(
             value: context.read<AuthCubit>(),
@@ -313,6 +314,7 @@ class _HomePageState extends State<HomePage> {
             );
           },
         ),
+      ),
       ),
     );
   }

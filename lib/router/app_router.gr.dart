@@ -74,6 +74,27 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProfilePage(),
       );
     },
+    RecipeDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<RecipeDetailsRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: RecipeDetailsPage(
+          key: args.key,
+          recipeId: args.recipeId,
+        ),
+      );
+    },
+    RecipeFormRoute.name: (routeData) {
+      final args = routeData.argsAs<RecipeFormRouteArgs>(
+          orElse: () => const RecipeFormRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: RecipeFormPage(
+          key: args.key,
+          recipe: args.recipe,
+        ),
+      );
+    },
     RegisterRoute.name: (routeData) {
       final args = routeData.argsAs<RegisterRouteArgs>(
           orElse: () => const RegisterRouteArgs());
@@ -281,6 +302,82 @@ class ProfileRoute extends PageRouteInfo<void> {
   static const String name = 'ProfileRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [RecipeDetailsPage]
+class RecipeDetailsRoute extends PageRouteInfo<RecipeDetailsRouteArgs> {
+  RecipeDetailsRoute({
+    Key? key,
+    required String recipeId,
+    List<PageRouteInfo>? children,
+  }) : super(
+          RecipeDetailsRoute.name,
+          args: RecipeDetailsRouteArgs(
+            key: key,
+            recipeId: recipeId,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'RecipeDetailsRoute';
+
+  static const PageInfo<RecipeDetailsRouteArgs> page =
+      PageInfo<RecipeDetailsRouteArgs>(name);
+}
+
+class RecipeDetailsRouteArgs {
+  const RecipeDetailsRouteArgs({
+    this.key,
+    required this.recipeId,
+  });
+
+  final Key? key;
+
+  final String recipeId;
+
+  @override
+  String toString() {
+    return 'RecipeDetailsRouteArgs{key: $key, recipeId: $recipeId}';
+  }
+}
+
+/// generated route for
+/// [RecipeFormPage]
+class RecipeFormRoute extends PageRouteInfo<RecipeFormRouteArgs> {
+  RecipeFormRoute({
+    Key? key,
+    RecipeDto? recipe,
+    List<PageRouteInfo>? children,
+  }) : super(
+          RecipeFormRoute.name,
+          args: RecipeFormRouteArgs(
+            key: key,
+            recipe: recipe,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'RecipeFormRoute';
+
+  static const PageInfo<RecipeFormRouteArgs> page =
+      PageInfo<RecipeFormRouteArgs>(name);
+}
+
+class RecipeFormRouteArgs {
+  const RecipeFormRouteArgs({
+    this.key,
+    this.recipe,
+  });
+
+  final Key? key;
+
+  final RecipeDto? recipe;
+
+  @override
+  String toString() {
+    return 'RecipeFormRouteArgs{key: $key, recipe: $recipe}';
+  }
 }
 
 /// generated route for
